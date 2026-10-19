@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Screen Settings</title>
+  <meta name="description" content="Settings shared by every Score Live TV: periods, board order, timing, animation, theme and voice.">
+  <meta name="color-scheme" content="dark light">
+  <script>
+    (function () {
+      // No URLSearchParams on old TV browsers.
+      var q = { get: function (k) { var m = new RegExp("[?&]" + k + "=([^&]*)").exec(location.search); return m ? decodeURIComponent(m[1]) : null; } };
+      var mode = 'dark';
+      try {
+        var cached = JSON.parse(localStorage.getItem(q.get('mock') === '1' ? 'scorelive.mock-settings' : 'scorelive.settings') || 'null');
+        mode = (cached && cached.theme) || 'dark';
+      } catch (e) { mode = 'dark'; }
+      if (mode === 'auto') mode = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', mode === 'light' ? 'light' : 'dark');
+    })();
+  </script>
+  <script>
+    // A TV has no dev tools: show script errors on screen so a stuck "Loading scores" says why.
+    window.onerror = function (msg, src, line) {
+      var box = document.getElementById('bootError');
+      if (!box) {
+        if (!document.body) return;
+        box = document.createElement('div');
+        box.id = 'bootError';
+        box.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;padding:8px 16px;font:14px/1.4 sans-serif;background:#7f1d1d;color:#fff;white-space:pre-wrap';
+        document.body.appendChild(box);
+      }
+      if (box.childNodes.length < 5) box.appendChild(document.createTextNode('Error: ' + msg + ' (' + (src || '').split('/').pop() + ':' + line + ')\n'));
+    };
+    // Old TV browsers (before Chrome 84) ignore gap on flex boxes; styles fall back to margins under html.no-flexgap.
+    (function () {
+      var d = document.createElement('div');
+      d.style.cssText = 'display:flex;flex-direction:column;gap:1px;position:absolute;visibility:hidden';
+      d.appendChild(document.createElement('div'));
+      d.appendChild(document.createElement('div'));
+      document.documentElement.appendChild(d);
+      if (d.scrollHeight !== 1) document.documentElement.className += ' no-flexgap';
+      document.documentElement.removeChild(d);
+    })();
+  </script>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <header class="bar">
+    <a id="backLink" class="back" href="./">← Board</a>
+    <div class="bar-title">
+      <h1>Screen settings</h1>
+      <p id="scopeNote" class="scope">Shared by every TV. Saving updates all screens at once.</p>
+    </div>
+    <div class="bar-actions">
+      <span id="saveState" class="save-state" role="status" aria-live="polite"></span>
+      <label id="pinWrap" class="pin" hidden>
+        <span>PIN</span>
+        <input id="pin" type="password" inputmode="numeric" autocomplete="off" size="6">
+      </label>
+      <button id="btnReset" class="btn btn-quiet" type="button">Reset to defaults</button>
+      <button id="btnSave" class="btn btn-primary" type="button" disabled>Save</button>
+    </div>
+  </header>
+
+  <main class="form" id="form">
+    <section class="group" aria-labelledby="g-display">
+      <div class="group-head">
+        <h2 id="g-display">Display</h2>
+        <p>What every screen looks like. The T key on a TV still flips its own theme until the next shared change.</p>
+      </div>
+      <div class="group-body">
+        <div class="field">
+          <span class="field-label" id="lbl-theme">Theme</span>
+          <div class="seg" role="radiogroup" aria-labelledby="lbl-theme" data-field="theme">
+            <label><input type="radio" name="theme" value="dark"><span>Dark</span></label>
+            <label><input type="radio" name="theme" value="light"><span>Light</span></label>
+            <label><input type="radio" name="theme" value="auto"><span>Follow system</span></label>
+          </div>
+        </div>
+        <label class="field field-inline">
+          <span class="field-label">Period filter bar</span>
+          <input type="checkbox" class="switch" id="showFilterBar">
+          <span class="hint">Chips under the header to switch period</span>
+        </label>
+        <label class="field field-inline">
+          <span class="field-label">Ticker</span>
+          <input type="checkbox" class="switch" id="showTicker">
+          <span class="hint">Headline facts crawling along the bottom</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="group" aria-labelledby="g-periods">
+      <div class="group-head">
+        <h2 id="g-periods">Default periods</h2>
+        <p>What the boards open on. A chip click on a TV is temporary until someone presses “Set as default”.</p>
+      </div>
+      <div class="group-body">
+        <div class="field">
+          <span class="field-label" id="lbl-crm">CRM Executive</span>
+          <div class="seg seg-wrap" role="radiogroup" aria-labelledby="lbl-crm" id="crmPeriod"></div>
+          <span class="hint">The CRM MIS page’s periods. A finished week or month shows the scores the CRM froze for it.</span>
+        </div>
+        <div class="field">
+          <span class="field-label" id="lbl-custom">CRM custom dates (the “Custom” chip)</span>
+          <div class="date-range" role="group" aria-labelledby="lbl-custom">
+            <label><span class="sr-only">From</span><input type="date" id="crmCustomFrom"></label>
+            <span aria-hidden="true">–</span>
+            <label><span class="sr-only">To</span><input type="date" id="crmCustomTo"></label>
+            <button type="button" class="btn btn-quiet btn-small" id="crmCustomClear">Clear</button>
+          </div>
+          <span class="hint" id="crmCustomHint"></span>
+        </div>
+        <div class="field">
+          <span class="field-label" id="lbl-sales">Sales Coordinators</span>
+          <div class="seg" role="radiogroup" aria-labelledby="lbl-sales" id="salesPeriod"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="group" aria-labelledby="g-rotation">
+      <div class="group-head">
+        <h2 id="g-rotation">Boards &amp; rotation</h2>
+        <p>Drag rows (or use the arrows) to set the order. Each board stays for its own number of seconds.</p>
+      </div>
+      <div class="group-body">
+        <label class="field field-inline">
+          <span class="field-label">Rotate boards</span>
+          <input type="checkbox" class="switch" id="rotate">
+          <span class="hint" id="rotateHint"></span>
+        </label>
+        <label class="field" id="singleWrap">
+          <span class="field-label">Show only</span>
+          <select id="singleBoard"></select>
+        </label>
+        <ol id="boardOrder" class="boards" aria-label="Board order"></ol>
+      </div>
+    </section>
+
+    <section class="group" aria-labelledby="g-anim">
+      <div class="group-head">
+        <h2 id="g-anim">Animation</h2>
+        <p>How one board hands over to the next. Off, or a screen set to reduce motion, cuts instantly.</p>
+      </div>
+      <div class="group-body anim-body">
+        <div class="anim-controls">
+          <label class="field field-inline">
+            <span class="field-label">Animate</span>
+            <input type="checkbox" class="switch" id="animEnabled">
+            <span class="hint" id="motionHint"></span>
+          </label>
+          <div class="field">
+            <span class="field-label" id="lbl-trans">Transition</span>
+            <div class="seg seg-wrap" role="radiogroup" aria-labelledby="lbl-trans" id="transition"></div>
+          </div>
+          <label class="field">
+            <span class="field-label">Speed <output id="speedOut" for="speed"></output></span>
+            <input type="range" id="speed" min="0.5" max="2" step="0.25">
+            <span class="range-ends"><span>Slower</span><span>Faster</span></span>
+          </label>
+        </div>
+        <figure class="pv" aria-label="Transition preview">
+          <div class="pv-stage" id="pvStage"></div>
+          <figcaption id="pvCaption"></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="group" aria-labelledby="g-paging">
+      <div class="group-head">
+        <h2 id="g-paging">Paging</h2>
+        <p>Only matters when a board has more people than fit on screen.</p>
+      </div>
+      <div class="group-body">
+        <label class="field field-inline">
+          <span class="field-label">Rows per page</span>
+          <input type="number" id="rowsPerPage" min="0" max="50" step="1" class="num">
+          <span class="hint">0 = fit as many as the screen holds</span>
+        </label>
+        <label class="field field-inline">
+          <span class="field-label">Seconds per page</span>
+          <input type="number" id="pageDwellSec" min="3" max="300" step="1" class="num">
+          <span class="hint">A paged board stays at least pages × this</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="group" aria-labelledby="g-voice">
+      <div class="group-head">
+        <h2 id="g-voice">Voice</h2>
+        <p>The board reads itself aloud, free: with the online voice from the server PC (the same voice on every screen) or with this browser’s own voice. Times and wording are shared by every screen; each screen decides here whether it speaks. Press V on a board to hear it now.</p>
+      </div>
+      <div class="group-body" id="voiceFields">
+        <div class="field">
+          <span class="field-label" id="lbl-voice-screens">Screens that speak</span>
+          <div class="seg seg-wrap" role="radiogroup" aria-labelledby="lbl-voice-screens" id="voiceScreens"></div>
+          <span class="hint">Every screen with the board open speaks at the times below; or only the screens switched on here.</span>
+        </div>
+        <label class="field field-inline" id="voiceScreenWrap">
+          <span class="field-label">This screen speaks</span>
+          <input type="checkbox" class="switch" id="voiceScreen">
+          <span class="hint">Saved in this browser only. Turning it on also lets the browser play sound.</span>
+        </label>
+        <label class="field field-inline">
+          <span class="field-label">Speak automatically</span>
+          <input type="checkbox" class="switch" id="voiceEnabled">
+          <span class="hint" id="voiceEnabledHint"></span>
+        </label>
+        <div class="field">
+          <span class="field-label" id="lbl-voice-mode">How it speaks</span>
+          <div class="seg" role="radiogroup" aria-labelledby="lbl-voice-mode" id="voiceMode"></div>
+          <span class="hint" id="voiceModeHint"></span>
+        </div>
+        <label class="field field-inline" id="voiceNonStopWrap">
+          <span class="field-label">Non-stop</span>
+          <input type="checkbox" class="switch" id="voiceNonStop">
+          <span class="hint">Every slide, all day long. The days and times below are not used.</span>
+        </label>
+        <div class="field" id="voiceDaysWrap">
+          <span class="field-label" id="lbl-voice-days">Days</span>
+          <div class="seg" role="radiogroup" aria-labelledby="lbl-voice-days" id="voiceFrequency"></div>
+          <div class="days" role="group" aria-label="Days of the week" id="voiceDays"></div>
+        </div>
+        <div class="field" id="voiceTimesWrap">
+          <span class="field-label">Times · IST (Asia/Kolkata) <output id="voiceTimesCount"></output></span>
+          <ol class="times" id="voiceTimes"></ol>
+          <button type="button" class="btn btn-quiet btn-small" id="voiceAddTime">+ Add a time</button>
+        </div>
+        <div class="field">
+          <span class="field-label">What it says</span>
+          <div class="checks" id="voiceSections"></div>
+        </div>
+        <label class="field field-inline">
+          <span class="field-label">Names per list</span>
+          <select class="select-short" id="voiceTopCount"></select>
+        </label>
+        <label class="field field-inline">
+          <span class="field-label">Delays to name</span>
+          <select class="select-short" id="voiceDelayCount"></select>
+        </label>
+        <div class="field">
+          <span class="field-label" id="lbl-voice-lang">Language</span>
+          <div class="seg" role="radiogroup" aria-labelledby="lbl-voice-lang" id="voiceLanguage"></div>
+        </div>
+        <div class="field">
+          <span class="field-label" id="lbl-voice-style">Tone of words</span>
+          <div class="seg" role="radiogroup" aria-labelledby="lbl-voice-style" id="voiceStyle"></div>
+        </div>
+        <div class="field">
+          <span class="field-label" id="lbl-voice-engine">Who speaks</span>
+          <div class="seg seg-wrap" role="radiogroup" aria-labelledby="lbl-voice-engine" id="voiceEngine"></div>
+          <span class="hint" id="voiceEngineHint"></span>
+        </div>
+        <label class="field" id="voiceNameWrap">
+          <span class="field-label">Screen voice</span>
+          <select id="voiceName"></select>
+          <span class="hint" id="voiceNameHint"></span>
+        </label>
+        <label class="field field-inline">
+          <span class="field-label">Celebration sounds</span>
+          <input type="checkbox" class="switch" id="voiceSounds">
+          <span class="hint">A fanfare before the top performers, a drum roll to push the last one.</span>
+        </label>
+        <div class="field">
+          <span class="field-label" id="lbl-voice-chime">Alert tone</span>
+          <div class="seg seg-wrap" role="radiogroup" aria-labelledby="lbl-voice-chime" id="voiceChime"></div>
+        </div>
+        <label class="field">
+          <span class="field-label">Volume <output id="voiceVolumeOut" for="voiceVolume"></output></span>
+          <input type="range" id="voiceVolume" min="0" max="1" step="0.05">
+        </label>
+        <label class="field">
+          <span class="field-label">Speed <output id="voiceRateOut" for="voiceRate"></output></span>
+          <input type="range" id="voiceRate" min="0.5" max="2" step="0.1">
+        </label>
+        <label class="field">
+          <span class="field-label">Pitch <output id="voicePitchOut" for="voicePitch"></output></span>
+          <input type="range" id="voicePitch" min="0.5" max="2" step="0.1">
+        </label>
+        <div class="field field-inline">
+          <button type="button" class="btn btn-quiet" id="voiceTest">▶ Test</button>
+          <button type="button" class="btn btn-quiet" id="voiceStop" disabled>■ Stop</button>
+          <span class="hint" id="voiceTestNote">Plays the settings above, even before Save.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ES5 bundle of js/settingsPage.js built by the server (lib/legacyBuild.js). -->
+  <script src="js/settings.legacy.js" onerror="var s=document.createElement('script');s.type='module';s.src='js/settingsPage.js';document.body.appendChild(s)"></script>
+</body>
+</html>

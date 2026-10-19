@@ -1,0 +1,1669 @@
+{
+ "updatedAt": "2026-10-01T09:33:19.601Z",
+ "pollSeconds": 120,
+ "status": {
+  "ok": true,
+  "errors": [],
+  "sources": {}
+ },
+ "crm": {
+  "periods": [
+   {
+    "key": "today",
+    "label": "Today"
+   },
+   {
+    "key": "weekly",
+    "label": "Weekly · last 7 days"
+   },
+   {
+    "key": "monthly",
+    "label": "Monthly · last 30 days"
+   },
+   {
+    "key": "quarterly",
+    "label": "Quarterly · last 90 days"
+   },
+   {
+    "key": "halfyearly",
+    "label": "Half-yearly · last 180 days"
+   },
+   {
+    "key": "yearly",
+    "label": "Yearly · last 365 days"
+   }
+  ],
+  "byPeriod": {
+   "today": {
+    "title": "CRM Executive",
+    "period": {
+     "key": "today",
+     "label": "Today",
+     "start": "2026-09-30T18:30:00.000Z",
+     "end": "2026-10-01T18:29:59.999Z"
+    },
+    "summary": {
+     "onTimePct": 81,
+     "onTimeDone": 13,
+     "doneTotal": 16,
+     "steps": 16,
+     "lateDone": 3,
+     "overdue": 20,
+     "pending": 23,
+     "openInTime": 3,
+     "onHold": 1,
+     "avgDelayLabel": "0d 7h",
+     "signedPiDue": 13,
+     "advanceDue": 10,
+     "advanceDueAmountLabel": "USD 254,205",
+     "balanceDue": 51,
+     "balanceDueAmountLabel": "USD 1,674,196"
+    },
+    "people": [
+     {
+      "id": "shivani-yadav",
+      "rank": 1,
+      "name": "Shivani Yadav",
+      "score": 88,
+      "steps": 4,
+      "onTimePct": 100,
+      "late": null,
+      "overdue": 3,
+      "pending": 5,
+      "avgDelayLabel": null,
+      "signedPi": 1,
+      "advance": 1,
+      "balance": 15
+     },
+     {
+      "id": "neha-sharma",
+      "rank": 2,
+      "name": "Neha Sharma",
+      "score": 71,
+      "steps": 6,
+      "onTimePct": 83,
+      "late": 1,
+      "overdue": 9,
+      "pending": 9,
+      "avgDelayLabel": "0d 6h",
+      "signedPi": 4,
+      "advance": 4,
+      "balance": 21
+     },
+     {
+      "id": "sanskriti",
+      "rank": 3,
+      "name": "Sanskriti",
+      "score": 64,
+      "steps": 3,
+      "onTimePct": 67,
+      "late": 1,
+      "overdue": 4,
+      "pending": 5,
+      "avgDelayLabel": "0d 6h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": 1
+     },
+     {
+      "id": "nishi-pandey",
+      "rank": 4,
+      "name": "Nishi Pandey",
+      "score": 52,
+      "steps": 2,
+      "onTimePct": 50,
+      "late": 1,
+      "overdue": 3,
+      "pending": 3,
+      "avgDelayLabel": "0d 6h",
+      "signedPi": 7,
+      "advance": 3,
+      "balance": 11
+     },
+     {
+      "id": "ruksar",
+      "rank": 5,
+      "name": "Ruksar",
+      "score": 49,
+      "steps": 1,
+      "onTimePct": 100,
+      "late": null,
+      "overdue": null,
+      "pending": null,
+      "avgDelayLabel": null,
+      "signedPi": null,
+      "advance": 1,
+      "balance": null
+     },
+     {
+      "id": "shalu-singh",
+      "rank": null,
+      "name": "Shalu Singh",
+      "score": null,
+      "steps": 0,
+      "onTimePct": null,
+      "late": null,
+      "overdue": 1,
+      "pending": 1,
+      "avgDelayLabel": null,
+      "signedPi": null,
+      "advance": null,
+      "balance": 3
+     }
+    ]
+   },
+   "weekly": {
+    "title": "CRM Executive",
+    "period": {
+     "key": "weekly",
+     "label": "Weekly · last 7 days",
+     "start": "2026-09-24T09:14:00.000Z",
+     "end": "2026-10-01T09:33:19.601Z"
+    },
+    "summary": {
+     "onTimePct": 80,
+     "onTimeDone": 92,
+     "doneTotal": 115,
+     "steps": 460,
+     "lateDone": 23,
+     "overdue": 325,
+     "pending": 345,
+     "openInTime": 20,
+     "onHold": 1,
+     "avgDelayLabel": "53d 1h",
+     "signedPiDue": 13,
+     "advanceDue": 10,
+     "advanceDueAmountLabel": "USD 254,205",
+     "balanceDue": 51,
+     "balanceDueAmountLabel": "USD 1,674,196"
+    },
+    "people": [
+     {
+      "id": "shivani-yadav",
+      "rank": 1,
+      "name": "Shivani Yadav",
+      "score": 79,
+      "steps": 96,
+      "onTimePct": 90,
+      "late": 4,
+      "overdue": 46,
+      "pending": 55,
+      "avgDelayLabel": "52d 1h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": 15
+     },
+     {
+      "id": "neha-sharma",
+      "rank": 2,
+      "name": "Neha Sharma",
+      "score": 60,
+      "steps": 135,
+      "onTimePct": 95,
+      "late": 1,
+      "overdue": 112,
+      "pending": 116,
+      "avgDelayLabel": "43d 6h",
+      "signedPi": 4,
+      "advance": 4,
+      "balance": 21
+     },
+     {
+      "id": "sanskriti",
+      "rank": 3,
+      "name": "Sanskriti",
+      "score": 51,
+      "steps": 104,
+      "onTimePct": 71,
+      "late": 7,
+      "overdue": 76,
+      "pending": 80,
+      "avgDelayLabel": "72d 0h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": 1
+     },
+     {
+      "id": "nishi-pandey",
+      "rank": 4,
+      "name": "Nishi Pandey",
+      "score": 47,
+      "steps": 76,
+      "onTimePct": 59,
+      "late": 7,
+      "overdue": 56,
+      "pending": 59,
+      "avgDelayLabel": "50d 6h",
+      "signedPi": 7,
+      "advance": 3,
+      "balance": 11
+     },
+     {
+      "id": "ruksar",
+      "rank": 5,
+      "name": "Ruksar",
+      "score": 45,
+      "steps": 15,
+      "onTimePct": 50,
+      "late": 4,
+      "overdue": 7,
+      "pending": 7,
+      "avgDelayLabel": "11d 4h",
+      "signedPi": null,
+      "advance": 1,
+      "balance": null
+     },
+     {
+      "id": "shalu-singh",
+      "rank": 6,
+      "name": "Shalu Singh",
+      "score": 44,
+      "steps": 34,
+      "onTimePct": 100,
+      "late": null,
+      "overdue": 28,
+      "pending": 28,
+      "avgDelayLabel": "59d 0h",
+      "signedPi": null,
+      "advance": null,
+      "balance": 3
+     }
+    ]
+   },
+   "monthly": {
+    "title": "CRM Executive",
+    "period": {
+     "key": "monthly",
+     "label": "Monthly · last 30 days",
+     "start": "2026-09-01T09:27:00.000Z",
+     "end": "2026-10-01T18:29:59.000Z"
+    },
+    "summary": {
+     "onTimePct": 59,
+     "onTimeDone": 351,
+     "doneTotal": 591,
+     "steps": 934,
+     "lateDone": 240,
+     "overdue": 323,
+     "pending": 343,
+     "openInTime": 20,
+     "onHold": 1,
+     "avgDelayLabel": "34d 6h",
+     "signedPiDue": 15,
+     "advanceDue": 13,
+     "advanceDueAmountLabel": "USD 263,384",
+     "balanceDue": 54,
+     "balanceDueAmountLabel": "USD 1,728,502"
+    },
+    "people": [
+     {
+      "id": "shivani-yadav",
+      "rank": 1,
+      "name": "Shivani Yadav",
+      "score": 77,
+      "steps": 265,
+      "onTimePct": 69,
+      "late": 66,
+      "overdue": 46,
+      "pending": 55,
+      "avgDelayLabel": "26d 4h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": 15
+     },
+     {
+      "id": "neha-sharma",
+      "rank": 2,
+      "name": "Neha Sharma",
+      "score": 55,
+      "steps": 248,
+      "onTimePct": 52,
+      "late": 63,
+      "overdue": 112,
+      "pending": 116,
+      "avgDelayLabel": "29d 7h",
+      "signedPi": 1,
+      "advance": 4,
+      "balance": 22
+     },
+     {
+      "id": "ruksar",
+      "rank": 3,
+      "name": "Ruksar",
+      "score": 46,
+      "steps": 45,
+      "onTimePct": 53,
+      "late": 18,
+      "overdue": 7,
+      "pending": 7,
+      "avgDelayLabel": "6d 6h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": null
+     },
+     {
+      "id": "nishi-pandey",
+      "rank": 4,
+      "name": "Nishi Pandey",
+      "score": 44,
+      "steps": 145,
+      "onTimePct": 47,
+      "late": 46,
+      "overdue": 56,
+      "pending": 58,
+      "avgDelayLabel": "33d 1h",
+      "signedPi": 7,
+      "advance": 2,
+      "balance": 12
+     },
+     {
+      "id": "sanskriti",
+      "rank": 5,
+      "name": "Sanskriti",
+      "score": 40,
+      "steps": 169,
+      "onTimePct": 63,
+      "late": 33,
+      "overdue": 75,
+      "pending": 79,
+      "avgDelayLabel": "56d 3h",
+      "signedPi": 4,
+      "advance": 4,
+      "balance": 1
+     },
+     {
+      "id": "shalu-singh",
+      "rank": 6,
+      "name": "Shalu Singh",
+      "score": 35,
+      "steps": 62,
+      "onTimePct": 60,
+      "late": 14,
+      "overdue": 27,
+      "pending": 27,
+      "avgDelayLabel": "41d 2h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": 3
+     }
+    ]
+   },
+   "quarterly": {
+    "title": "CRM Executive",
+    "period": {
+     "key": "quarterly",
+     "label": "Quarterly · last 90 days",
+     "start": "2026-07-03T09:27:00.000Z",
+     "end": "2026-10-01T18:29:59.000Z"
+    },
+    "summary": {
+     "onTimePct": 51,
+     "onTimeDone": 777,
+     "doneTotal": 1516,
+     "steps": 1859,
+     "lateDone": 739,
+     "overdue": 323,
+     "pending": 343,
+     "openInTime": 20,
+     "onHold": 1,
+     "avgDelayLabel": "23d 3h",
+     "signedPiDue": 15,
+     "advanceDue": 13,
+     "advanceDueAmountLabel": "USD 263,384",
+     "balanceDue": 54,
+     "balanceDueAmountLabel": "USD 1,728,502"
+    },
+    "people": [
+     {
+      "id": "crm1@shaziarice.com",
+      "rank": 1,
+      "name": "Shivani Yadav",
+      "score": 74,
+      "steps": 537,
+      "onTimePct": 58,
+      "late": 202,
+      "overdue": 46,
+      "pending": 55,
+      "avgDelayLabel": "16d 5h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": 15
+     },
+     {
+      "id": "crm7@shaziarice.com",
+      "rank": 2,
+      "name": "Neha Sharma",
+      "score": 61,
+      "steps": 516,
+      "onTimePct": 47,
+      "late": 214,
+      "overdue": 112,
+      "pending": 116,
+      "avgDelayLabel": "20d 7h",
+      "signedPi": 1,
+      "advance": 4,
+      "balance": 22
+     },
+     {
+      "id": "crm8@shaziarice.com",
+      "rank": 3,
+      "name": "Sanskriti",
+      "score": 44,
+      "steps": 354,
+      "onTimePct": 49,
+      "late": 140,
+      "overdue": 75,
+      "pending": 79,
+      "avgDelayLabel": "31d 5h",
+      "signedPi": 4,
+      "advance": 4,
+      "balance": 1
+     },
+     {
+      "id": "crm6@shaziarice.com",
+      "rank": 4,
+      "name": "Nishi Pandey",
+      "score": 42,
+      "steps": 262,
+      "onTimePct": 48,
+      "late": 106,
+      "overdue": 56,
+      "pending": 59,
+      "avgDelayLabel": "25d 3h",
+      "signedPi": 7,
+      "advance": 2,
+      "balance": 12
+     },
+     {
+      "id": "crm5@shaziarice.com",
+      "rank": 5,
+      "name": "Ruksar",
+      "score": 40,
+      "steps": 69,
+      "onTimePct": 47,
+      "late": 33,
+      "overdue": 7,
+      "pending": 7,
+      "avgDelayLabel": "7d 7h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": null
+     },
+     {
+      "id": "crm9@shaziarice.com",
+      "rank": 6,
+      "name": "Shalu Singh",
+      "score": 27,
+      "steps": 121,
+      "onTimePct": 53,
+      "late": 44,
+      "overdue": 27,
+      "pending": 27,
+      "avgDelayLabel": "37d 2h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": 4
+     }
+    ]
+   },
+   "halfyearly": {
+    "title": "CRM Executive",
+    "period": {
+     "key": "halfyearly",
+     "label": "Half-yearly · last 180 days",
+     "start": "2026-04-04T09:27:00.000Z",
+     "end": "2026-10-01T18:29:59.000Z"
+    },
+    "summary": {
+     "onTimePct": 49,
+     "onTimeDone": 1057,
+     "doneTotal": 2163,
+     "steps": 2506,
+     "lateDone": 1106,
+     "overdue": 323,
+     "pending": 343,
+     "openInTime": 20,
+     "onHold": 1,
+     "avgDelayLabel": "22d 1h",
+     "signedPiDue": 15,
+     "advanceDue": 13,
+     "advanceDueAmountLabel": "USD 263,384",
+     "balanceDue": 54,
+     "balanceDueAmountLabel": "USD 1,728,502"
+    },
+    "people": [
+     {
+      "id": "crm1@shaziarice.com",
+      "rank": 1,
+      "name": "Shivani Yadav",
+      "score": 71,
+      "steps": 770,
+      "onTimePct": 57,
+      "late": 307,
+      "overdue": 46,
+      "pending": 55,
+      "avgDelayLabel": "17d 6h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": 15
+     },
+     {
+      "id": "crm7@shaziarice.com",
+      "rank": 2,
+      "name": "Neha Sharma",
+      "score": 56,
+      "steps": 707,
+      "onTimePct": 42,
+      "late": 343,
+      "overdue": 112,
+      "pending": 116,
+      "avgDelayLabel": "21d 5h",
+      "signedPi": 1,
+      "advance": 4,
+      "balance": 22
+     },
+     {
+      "id": "crm8@shaziarice.com",
+      "rank": 3,
+      "name": "Sanskriti",
+      "score": 40,
+      "steps": 436,
+      "onTimePct": 49,
+      "late": 181,
+      "overdue": 75,
+      "pending": 79,
+      "avgDelayLabel": "28d 2h",
+      "signedPi": 4,
+      "advance": 4,
+      "balance": 1
+     },
+     {
+      "id": "crm5@shaziarice.com",
+      "rank": 4,
+      "name": "Ruksar",
+      "score": 39,
+      "steps": 75,
+      "onTimePct": 50,
+      "late": 34,
+      "overdue": 7,
+      "pending": 7,
+      "avgDelayLabel": "7d 7h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": null
+     },
+     {
+      "id": "crm6@shaziarice.com",
+      "rank": 5,
+      "name": "Nishi Pandey",
+      "score": 38,
+      "steps": 354,
+      "onTimePct": 40,
+      "late": 176,
+      "overdue": 56,
+      "pending": 59,
+      "avgDelayLabel": "21d 7h",
+      "signedPi": 7,
+      "advance": 2,
+      "balance": 12
+     },
+     {
+      "id": "crm9@shaziarice.com",
+      "rank": 6,
+      "name": "Shalu Singh",
+      "score": 27,
+      "steps": 164,
+      "onTimePct": 53,
+      "late": 65,
+      "overdue": 27,
+      "pending": 27,
+      "avgDelayLabel": "31d 1h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": 4
+     }
+    ]
+   },
+   "yearly": {
+    "title": "CRM Executive",
+    "period": {
+     "key": "yearly",
+     "label": "Yearly · last 365 days",
+     "start": "2025-10-01T09:27:00.000Z",
+     "end": "2026-10-01T18:29:59.000Z"
+    },
+    "summary": {
+     "onTimePct": 49,
+     "onTimeDone": 1057,
+     "doneTotal": 2163,
+     "steps": 2506,
+     "lateDone": 1106,
+     "overdue": 323,
+     "pending": 343,
+     "openInTime": 20,
+     "onHold": 1,
+     "avgDelayLabel": "22d 1h",
+     "signedPiDue": 15,
+     "advanceDue": 13,
+     "advanceDueAmountLabel": "USD 263,384",
+     "balanceDue": 54,
+     "balanceDueAmountLabel": "USD 1,728,502"
+    },
+    "people": [
+     {
+      "id": "crm1@shaziarice.com",
+      "rank": 1,
+      "name": "Shivani Yadav",
+      "score": 71,
+      "steps": 770,
+      "onTimePct": 57,
+      "late": 307,
+      "overdue": 46,
+      "pending": 55,
+      "avgDelayLabel": "17d 6h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": 15
+     },
+     {
+      "id": "crm7@shaziarice.com",
+      "rank": 2,
+      "name": "Neha Sharma",
+      "score": 56,
+      "steps": 707,
+      "onTimePct": 42,
+      "late": 343,
+      "overdue": 112,
+      "pending": 116,
+      "avgDelayLabel": "21d 5h",
+      "signedPi": 1,
+      "advance": 4,
+      "balance": 22
+     },
+     {
+      "id": "crm8@shaziarice.com",
+      "rank": 3,
+      "name": "Sanskriti",
+      "score": 40,
+      "steps": 436,
+      "onTimePct": 49,
+      "late": 181,
+      "overdue": 75,
+      "pending": 79,
+      "avgDelayLabel": "28d 2h",
+      "signedPi": 4,
+      "advance": 4,
+      "balance": 1
+     },
+     {
+      "id": "crm5@shaziarice.com",
+      "rank": 4,
+      "name": "Ruksar",
+      "score": 39,
+      "steps": 75,
+      "onTimePct": 50,
+      "late": 34,
+      "overdue": 7,
+      "pending": 7,
+      "avgDelayLabel": "7d 7h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": null
+     },
+     {
+      "id": "crm6@shaziarice.com",
+      "rank": 5,
+      "name": "Nishi Pandey",
+      "score": 38,
+      "steps": 354,
+      "onTimePct": 40,
+      "late": 176,
+      "overdue": 56,
+      "pending": 59,
+      "avgDelayLabel": "21d 7h",
+      "signedPi": 7,
+      "advance": 2,
+      "balance": 12
+     },
+     {
+      "id": "crm9@shaziarice.com",
+      "rank": 6,
+      "name": "Shalu Singh",
+      "score": 27,
+      "steps": 164,
+      "onTimePct": 53,
+      "late": 65,
+      "overdue": 27,
+      "pending": 27,
+      "avgDelayLabel": "31d 1h",
+      "signedPi": 1,
+      "advance": 1,
+      "balance": 4
+     }
+    ]
+   }
+  }
+ },
+ "sales": {
+  "periods": [
+   {
+    "key": "today",
+    "label": "Today"
+   },
+   {
+    "key": "week",
+    "label": "This week"
+   },
+   {
+    "key": "month",
+    "label": "This month"
+   }
+  ],
+  "byPeriod": {
+   "today": {
+    "period": {
+     "mode": "custom",
+     "key": "custom_2026-10-01_2026-10-01",
+     "label": "Today · 1 Oct 2026",
+     "start": "2026-09-30T18:30:00.000Z",
+     "end": "2026-10-01T18:29:59.999Z"
+    },
+    "overall": {
+     "completed": 6,
+     "completedEarlier": 831,
+     "prevPending": 62,
+     "pendingMonth": 1
+    },
+    "stepSummary": [],
+    "coordinators": [
+     {
+      "name": "Sawanti Bose",
+      "email": "sawanti@shaziarice.com",
+      "crmNames": [
+       "Shivani Yadav"
+      ],
+      "overallRank": 1,
+      "rankScore": 1,
+      "rankFormula": "1 × 1",
+      "qualityPct": 12.3,
+      "reward": "cash",
+      "counts": {
+       "done": 2,
+       "backlog": 31,
+       "pending": 0,
+       "earlier": 583
+      },
+      "categories": [
+       {
+        "key": "enquiry",
+        "label": "Enquiry",
+        "weight": 30,
+        "value": null,
+        "na": true,
+        "rank": null
+       },
+       {
+        "key": "stability",
+        "label": "CRM",
+        "weight": 20,
+        "value": 54,
+        "na": false,
+        "rank": 1
+       },
+       {
+        "key": "tickets",
+        "label": "Tickets",
+        "weight": 20,
+        "value": null,
+        "na": false,
+        "rank": null
+       },
+       {
+        "key": "feedback",
+        "label": "Client Feedback",
+        "weight": 30,
+        "value": 5,
+        "na": false,
+        "rank": 1
+       }
+      ]
+     },
+     {
+      "name": "Nidhi Sharma",
+      "email": "nidhi@shaziarice.com",
+      "crmNames": [
+       "Sanskriti"
+      ],
+      "overallRank": 2,
+      "rankScore": 8,
+      "rankFormula": "2 × 4",
+      "qualityPct": 9.2,
+      "reward": "cash",
+      "counts": {
+       "done": 2,
+       "backlog": 41,
+       "pending": 1,
+       "earlier": 488
+      },
+      "categories": [
+       {
+        "key": "enquiry",
+        "label": "Enquiry",
+        "weight": 30,
+        "value": null,
+        "na": true,
+        "rank": null
+       },
+       {
+        "key": "stability",
+        "label": "CRM",
+        "weight": 20,
+        "value": 46,
+        "na": false,
+        "rank": 2
+       },
+       {
+        "key": "tickets",
+        "label": "Tickets",
+        "weight": 20,
+        "value": null,
+        "na": false,
+        "rank": null
+       },
+       {
+        "key": "feedback",
+        "label": "Client Feedback",
+        "weight": 30,
+        "value": 0,
+        "na": false,
+        "rank": 4
+       }
+      ]
+     },
+     {
+      "name": "Manmeet Kaur",
+      "email": "manmeet@shaziarice.com",
+      "crmNames": [
+       "Neha Sharma"
+      ],
+      "overallRank": 3,
+      "rankScore": 8,
+      "rankFormula": "4 × 2",
+      "qualityPct": 3.3,
+      "reward": null,
+      "counts": {
+       "done": 0,
+       "backlog": 46,
+       "pending": 0,
+       "earlier": 581
+      },
+      "categories": [
+       {
+        "key": "enquiry",
+        "label": "Enquiry",
+        "weight": 30,
+        "value": null,
+        "na": true,
+        "rank": null
+       },
+       {
+        "key": "stability",
+        "label": "CRM",
+        "weight": 20,
+        "value": 12,
+        "na": false,
+        "rank": 4
+       },
+       {
+        "key": "tickets",
+        "label": "Tickets",
+        "weight": 20,
+        "value": null,
+        "na": false,
+        "rank": null
+       },
+       {
+        "key": "feedback",
+        "label": "Client Feedback",
+        "weight": 30,
+        "value": 3,
+        "na": false,
+        "rank": 2
+       }
+      ]
+     },
+     {
+      "name": "Sulochana",
+      "email": "sulochana@shaziarice.com",
+      "crmNames": [
+       "Nishi Pandey"
+      ],
+      "overallRank": 4,
+      "rankScore": 9,
+      "rankFormula": "3 × 3",
+      "qualityPct": 5.5,
+      "reward": null,
+      "counts": {
+       "done": 2,
+       "backlog": 37,
+       "pending": 0,
+       "earlier": 426
+      },
+      "categories": [
+       {
+        "key": "enquiry",
+        "label": "Enquiry",
+        "weight": 30,
+        "value": null,
+        "na": true,
+        "rank": null
+       },
+       {
+        "key": "stability",
+        "label": "CRM",
+        "weight": 20,
+        "value": 26,
+        "na": false,
+        "rank": 3
+       },
+       {
+        "key": "tickets",
+        "label": "Tickets",
+        "weight": 20,
+        "value": null,
+        "na": false,
+        "rank": null
+       },
+       {
+        "key": "feedback",
+        "label": "Client Feedback",
+        "weight": 30,
+        "value": 1,
+        "na": false,
+        "rank": 3
+       }
+      ]
+     }
+    ]
+   },
+   "week": {
+    "period": {
+     "mode": "week",
+     "key": "week_2026-09-28",
+     "label": "This Week · 28 Sep – 1 Oct",
+     "start": "2026-09-27T18:30:00.000Z",
+     "end": "2026-10-01T09:33:19.601Z"
+    },
+    "overall": {
+     "completed": 15,
+     "completedEarlier": 2078,
+     "prevPending": 155,
+     "pendingMonth": 3
+    },
+    "stepSummary": [],
+    "coordinators": [
+     {
+      "name": "Nidhi Sharma",
+      "email": "nidhi@shaziarice.com",
+      "crmNames": [
+       "Sanskriti"
+      ],
+      "overallRank": 1,
+      "rankScore": 2,
+      "rankFormula": "1 × 2",
+      "qualityPct": 13.2,
+      "reward": "cash",
+      "counts": {
+       "done": 6,
+       "backlog": 41,
+       "pending": 2,
+       "earlier": 488
+      },
+      "categories": [
+       {
+        "key": "enquiry",
+        "label": "Enquiry",
+        "weight": 30,
+        "value": null,
+        "na": true,
+        "rank": null
+       },
+       {
+        "key": "stability",
+        "label": "CRM",
+        "weight": 20,
+        "value": 60,
+        "na": false,
+        "rank": 1
+       },
+       {
+        "key": "tickets",
+        "label": "Tickets",
+        "weight": 20,
+        "value": null,
+        "na": false,
+        "rank": null
+       },
+       {
+        "key": "feedback",
+        "label": "Client Feedback",
+        "weight": 30,
+        "value": 4,
+        "na": false,
+        "rank": 2
+       }
+      ]
+     },
+     {
+      "name": "Manmeet Kaur",
+      "email": "manmeet@shaziarice.com",
+      "crmNames": [
+       "Neha Sharma"
+      ],
+      "overallRank": 2,
+      "rankScore": 4,
+      "rankFormula": "4 × 1",
+      "qualityPct": 4.8,
+      "reward": "cash",
+      "counts": {
+       "done": 1,
+       "backlog": 46,
+       "pending": 0,
+       "earlier": 581
+      },
+      "categories": [
+       {
+        "key": "enquiry",
+        "label": "Enquiry",
+        "weight": 30,
+        "value": null,
+        "na": true,
+        "rank": null
+       },
+       {
+        "key": "stability",
+        "label": "CRM",
+        "weight": 20,
+        "value": 15,
+        "na": false,
+        "rank": 4
+       },
+       {
+        "key": "tickets",
+        "label": "Tickets",
+        "weight": 20,
+        "value": null,
+        "na": false,
+        "rank": null
+       },
+       {
+        "key": "feedback",
+        "label": "Client Feedback",
+        "weight": 30,
+        "value": 6,
+        "na": false,
+        "rank": 1
+       }
+      ]
+     },
+     {
+      "name": "Sawanti Bose",
+      "email": "sawanti@shaziarice.com",
+      "crmNames": [
+       "Shivani Yadav"
+      ],
+      "overallRank": 3,
+      "rankScore": 8,
+      "rankFormula": "2 × 4",
+      "qualityPct": 9.2,
+      "reward": null,
+      "counts": {
+       "done": 5,
+       "backlog": 31,
+       "pending": 0,
+       "earlier": 583
+      },
+      "categories": [
+       {
+        "key": "enquiry",
+        "label": "Enquiry",
+        "weight": 30,
+        "value": null,
+        "na": true,
+        "rank": null
+       },
+       {
+        "key": "stability",
+        "label": "CRM",
+        "weight": 20,
+        "value": 46,
+        "na": false,
+        "rank": 2
+       },
+       {
+        "key": "tickets",
+        "label": "Tickets",
+        "weight": 20,
+        "value": null,
+        "na": false,
+        "rank": null
+       },
+       {
+        "key": "feedback",
+        "label": "Client Feedback",
+        "weight": 30,
+        "value": 0,
+        "na": false,
+        "rank": 4
+       }
+      ]
+     },
+     {
+      "name": "Sulochana",
+      "email": "sulochana@shaziarice.com",
+      "crmNames": [
+       "Nishi Pandey"
+      ],
+      "overallRank": 4,
+      "rankScore": 9,
+      "rankFormula": "3 × 3",
+      "qualityPct": 6,
+      "reward": null,
+      "counts": {
+       "done": 4,
+       "backlog": 37,
+       "pending": 1,
+       "earlier": 426
+      },
+      "categories": [
+       {
+        "key": "enquiry",
+        "label": "Enquiry",
+        "weight": 30,
+        "value": null,
+        "na": true,
+        "rank": null
+       },
+       {
+        "key": "stability",
+        "label": "CRM",
+        "weight": 20,
+        "value": 27,
+        "na": false,
+        "rank": 3
+       },
+       {
+        "key": "tickets",
+        "label": "Tickets",
+        "weight": 20,
+        "value": null,
+        "na": false,
+        "rank": null
+       },
+       {
+        "key": "feedback",
+        "label": "Client Feedback",
+        "weight": 30,
+        "value": 2,
+        "na": false,
+        "rank": 3
+       }
+      ]
+     }
+    ]
+   },
+   "month": {
+    "period": {
+     "mode": "month",
+     "key": "month_2026-10",
+     "label": "This Month · October 2026",
+     "start": "2026-09-30T18:30:00.000Z",
+     "end": "2026-10-01T09:33:19.601Z"
+    },
+    "overall": {
+     "completed": 15,
+     "completedEarlier": 2078,
+     "prevPending": 155,
+     "pendingMonth": 3
+    },
+    "stepSummary": [],
+    "coordinators": [
+     {
+      "name": "Nidhi Sharma",
+      "email": "nidhi@shaziarice.com",
+      "crmNames": [
+       "Sanskriti"
+      ],
+      "overallRank": 1,
+      "rankScore": 1,
+      "rankFormula": "1 × 1",
+      "qualityPct": 22.4,
+      "reward": "cash",
+      "counts": {
+       "done": 6,
+       "backlog": 41,
+       "pending": 2,
+       "earlier": 488
+      },
+      "categories": [
+       {
+        "key": "enquiry",
+        "label": "Enquiry",
+        "weight": 30,
+        "value": null,
+        "na": true,
+        "rank": null
+       },
+       {
+        "key": "stability",
+        "label": "CRM",
+        "weight": 20,
+        "value": 56,
+        "na": false,
+        "rank": 1
+       },
+       {
+        "key": "tickets",
+        "label": "Tickets",
+        "weight": 20,
+        "value": null,
+        "na": false,
+        "rank": null
+       },
+       {
+        "key": "feedback",
+        "label": "Client Feedback",
+        "weight": 30,
+        "value": 0,
+        "na": false,
+        "rank": 1
+       }
+      ]
+     },
+     {
+      "name": "Sawanti Bose",
+      "email": "sawanti@shaziarice.com",
+      "crmNames": [
+       "Shivani Yadav"
+      ],
+      "overallRank": 2,
+      "rankScore": 8,
+      "rankFormula": "2 × 4",
+      "qualityPct": 19.6,
+      "reward": "cash",
+      "counts": {
+       "done": 5,
+       "backlog": 31,
+       "pending": 0,
+       "earlier": 583
+      },
+      "categories": [
+       {
+        "key": "enquiry",
+        "label": "Enquiry",
+        "weight": 30,
+        "value": null,
+        "na": true,
+        "rank": null
+       },
+       {
+        "key": "stability",
+        "label": "CRM",
+        "weight": 20,
+        "value": 49,
+        "na": false,
+        "rank": 2
+       },
+       {
+        "key": "tickets",
+        "label": "Tickets",
+        "weight": 20,
+        "value": null,
+        "na": false,
+        "rank": null
+       },
+       {
+        "key": "feedback",
+        "label": "Client Feedback",
+        "weight": 30,
+        "value": 0,
+        "na": false,
+        "rank": 4
+       }
+      ]
+     },
+     {
+      "name": "Manmeet Kaur",
+      "email": "manmeet@shaziarice.com",
+      "crmNames": [
+       "Neha Sharma"
+      ],
+      "overallRank": 3,
+      "rankScore": 8,
+      "rankFormula": "4 × 2",
+      "qualityPct": 3.6,
+      "reward": null,
+      "counts": {
+       "done": 1,
+       "backlog": 46,
+       "pending": 0,
+       "earlier": 581
+      },
+      "categories": [
+       {
+        "key": "enquiry",
+        "label": "Enquiry",
+        "weight": 30,
+        "value": null,
+        "na": true,
+        "rank": null
+       },
+       {
+        "key": "stability",
+        "label": "CRM",
+        "weight": 20,
+        "value": 9,
+        "na": false,
+        "rank": 4
+       },
+       {
+        "key": "tickets",
+        "label": "Tickets",
+        "weight": 20,
+        "value": null,
+        "na": false,
+        "rank": null
+       },
+       {
+        "key": "feedback",
+        "label": "Client Feedback",
+        "weight": 30,
+        "value": 0,
+        "na": false,
+        "rank": 2
+       }
+      ]
+     },
+     {
+      "name": "Sulochana",
+      "email": "sulochana@shaziarice.com",
+      "crmNames": [
+       "Nishi Pandey"
+      ],
+      "overallRank": 4,
+      "rankScore": 9,
+      "rankFormula": "3 × 3",
+      "qualityPct": 10,
+      "reward": null,
+      "counts": {
+       "done": 3,
+       "backlog": 37,
+       "pending": 1,
+       "earlier": 426
+      },
+      "categories": [
+       {
+        "key": "enquiry",
+        "label": "Enquiry",
+        "weight": 30,
+        "value": null,
+        "na": true,
+        "rank": null
+       },
+       {
+        "key": "stability",
+        "label": "CRM",
+        "weight": 20,
+        "value": 25,
+        "na": false,
+        "rank": 3
+       },
+       {
+        "key": "tickets",
+        "label": "Tickets",
+        "weight": 20,
+        "value": null,
+        "na": false,
+        "rank": null
+       },
+       {
+        "key": "feedback",
+        "label": "Client Feedback",
+        "weight": 30,
+        "value": 0,
+        "na": false,
+        "rank": 3
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "previous": {
+   "period": {
+    "mode": "custom",
+    "key": "custom_2026-09-01_2026-09-30",
+    "label": "Last Month · September 2026",
+    "start": "2026-08-31T18:30:00.000Z",
+    "end": "2026-09-30T18:29:59.000Z"
+   },
+   "overall": {
+    "completed": 100,
+    "completedEarlier": 1978,
+    "prevPending": 92,
+    "pendingMonth": 20
+   },
+   "stepSummary": [],
+   "coordinators": [
+    {
+     "name": "Sawanti Bose",
+     "email": "sawanti@shaziarice.com",
+     "crmNames": [
+      "Shivani Yadav"
+     ],
+     "overallRank": 1,
+     "rankScore": 2,
+     "rankFormula": "1 × 2",
+     "qualityPct": 61.2,
+     "reward": "cash",
+     "counts": {
+      "done": 38,
+      "backlog": 12,
+      "pending": 4,
+      "earlier": 545
+     },
+     "categories": [
+      {
+       "key": "enquiry",
+       "label": "Enquiry",
+       "weight": 30,
+       "value": null,
+       "na": true,
+       "rank": null
+      },
+      {
+       "key": "stability",
+       "label": "CRM",
+       "weight": 20,
+       "value": 81,
+       "na": false,
+       "rank": 1
+      },
+      {
+       "key": "tickets",
+       "label": "Tickets",
+       "weight": 20,
+       "value": 72,
+       "na": false,
+       "rank": 2
+      },
+      {
+       "key": "feedback",
+       "label": "Client Feedback",
+       "weight": 30,
+       "value": 40,
+       "na": false,
+       "rank": 1
+      }
+     ]
+    },
+    {
+     "name": "Nidhi Sharma",
+     "email": "nidhi@shaziarice.com",
+     "crmNames": [
+      "Sanskriti"
+     ],
+     "overallRank": 2,
+     "rankScore": 4,
+     "rankFormula": "2 × 1 × 2",
+     "qualityPct": 54.8,
+     "reward": "cash",
+     "counts": {
+      "done": 31,
+      "backlog": 19,
+      "pending": 6,
+      "earlier": 457
+     },
+     "categories": [
+      {
+       "key": "enquiry",
+       "label": "Enquiry",
+       "weight": 30,
+       "value": null,
+       "na": true,
+       "rank": null
+      },
+      {
+       "key": "stability",
+       "label": "CRM",
+       "weight": 20,
+       "value": 74,
+       "na": false,
+       "rank": 2
+      },
+      {
+       "key": "tickets",
+       "label": "Tickets",
+       "weight": 20,
+       "value": 88,
+       "na": false,
+       "rank": 1
+      },
+      {
+       "key": "feedback",
+       "label": "Client Feedback",
+       "weight": 30,
+       "value": 35,
+       "na": false,
+       "rank": 2
+      }
+     ]
+    },
+    {
+     "name": "Sulochana",
+     "email": "sulochana@shaziarice.com",
+     "crmNames": [
+      "Nishi Pandey"
+     ],
+     "overallRank": 3,
+     "rankScore": 27,
+     "rankFormula": "3 × 3 × 3",
+     "qualityPct": 28.1,
+     "reward": null,
+     "counts": {
+      "done": 22,
+      "backlog": 21,
+      "pending": 3,
+      "earlier": 404
+     },
+     "categories": [
+      {
+       "key": "enquiry",
+       "label": "Enquiry",
+       "weight": 30,
+       "value": null,
+       "na": true,
+       "rank": null
+      },
+      {
+       "key": "stability",
+       "label": "CRM",
+       "weight": 20,
+       "value": 52,
+       "na": false,
+       "rank": 3
+      },
+      {
+       "key": "tickets",
+       "label": "Tickets",
+       "weight": 20,
+       "value": 40,
+       "na": false,
+       "rank": 3
+      },
+      {
+       "key": "feedback",
+       "label": "Client Feedback",
+       "weight": 30,
+       "value": 20,
+       "na": false,
+       "rank": 3
+      }
+     ]
+    },
+    {
+     "name": "Manmeet Kaur",
+     "email": "manmeet@shaziarice.com",
+     "crmNames": [
+      "Neha Sharma"
+     ],
+     "overallRank": 4,
+     "rankScore": 64,
+     "rankFormula": "4 × 4 × 4",
+     "qualityPct": 12.5,
+     "reward": null,
+     "counts": {
+      "done": 9,
+      "backlog": 40,
+      "pending": 7,
+      "earlier": 572
+     },
+     "categories": [
+      {
+       "key": "enquiry",
+       "label": "Enquiry",
+       "weight": 30,
+       "value": null,
+       "na": true,
+       "rank": null
+      },
+      {
+       "key": "stability",
+       "label": "CRM",
+       "weight": 20,
+       "value": 18,
+       "na": false,
+       "rank": 4
+      },
+      {
+       "key": "tickets",
+       "label": "Tickets",
+       "weight": 20,
+       "value": 25,
+       "na": false,
+       "rank": 4
+      },
+      {
+       "key": "feedback",
+       "label": "Client Feedback",
+       "weight": 30,
+       "value": 10,
+       "na": false,
+       "rank": 4
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

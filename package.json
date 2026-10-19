@@ -1,0 +1,30 @@
+{
+  "name": "score-live",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Live TV scoreboard for Shazia Rice CRM - Department Analytics + Sales Report",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "selftest": "node engine/selftest.mjs",
+    "sync-crm": "node tools/sync-crm.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "core-js": "^3.50.0",
+    "dotenv": "^16.4.5",
+    "esbuild": "^0.28.2",
+    "express": "^4.21.2",
+    "msedge-tts": "^2.1.0",
+    "socket.io": "^4.8.1",
+    "typescript": "^5.9.3",
+    "whatwg-fetch": "^3.6.20"
+  },
+  "devDependencies": {
+    "acorn": "^8.19.0"
+  }
+}

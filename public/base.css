@@ -1,0 +1,155 @@
+/* Score Live shared tokens (TV board + settings page). */
+
+:root {
+  --u: 0.5625vw;
+  --brand-navy: #1e3a5f;
+  --brand-gold: #c8a44d;
+  --medal-1: #c8a44d;
+  --medal-2: #9aa6b2;
+  --medal-3: #b08d57;
+  --font: "Bahnschrift", "DIN Alternate", "Roboto Condensed", "Segoe UI", system-ui, sans-serif;
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ease-in-out: cubic-bezier(.7, 0, .2, 1);
+}
+/* --u = min(1vh, 0.5625vw). min() is Chrome 79+ and a var() holding it breaks every calc() before that,
+   so older TVs get the same value from the aspect ratio: 1vh wins once width/height >= 16/9. */
+@media (min-aspect-ratio: 16/9) { :root { --u: 1vh; } }
+@supports (width: min(1px, 2px)) { :root { --u: min(1vh, 0.5625vw); } }
+
+/* ---------- Night (default) ---------- */
+:root,
+:root[data-theme="dark"] {
+  --bg: #08101b;
+  --bg-grain: #0b1522;
+  --panel: #0f1a29;
+  --panel-head: #13233a;
+  --row-alt: #0c1625;
+  --line: #1d2c42;
+  --line-strong: #2a3d58;
+  --ink: #f1f4f8;
+  --ink-2: #b4c0d1;
+  --ink-3: #7b8ba3;
+  --gold: #e0bd62;
+  --gold-soft: rgba(224, 189, 98, .12);
+  --gold-line: rgba(224, 189, 98, .55);
+  --on-gold: #1b1404;
+  --mast-bg: transparent;
+  --mast-ink: var(--ink);
+  --mast-ink-2: var(--ink-2);
+  --mast-rule: var(--gold-line);
+  --mark-bg: var(--gold);
+  --mark-ink: #0b1522;
+  --good: #52d68f;
+  --warn: #f5b84a;
+  --bad: #ff6b6b;
+  --good-bg: #1e8a52;
+  --warn-bg: #f2b23c;
+  --bad-bg: #d63c3c;
+  --good-on: #ffffff;
+  --warn-on: #2b1b00;
+  --bad-on: #ffffff;
+  --chip-done-bg: rgba(82, 214, 143, .14);
+  --chip-backlog-bg: rgba(255, 107, 107, .14);
+  --chip-pending-bg: rgba(245, 184, 74, .14);
+  --chip-muted-bg: rgba(180, 192, 209, .10);
+  --self-bg: #2b5185;
+  --self-ink: #ffffff;
+  --partner-bg: #1a2a40;
+  --partner-ink: #c6d1e0;
+  --na-bg: #1a2638;
+  --na-ink: #8091a8;
+  --plain-rank-bg: #1d2b40;
+  --plain-rank-ink: #c6d1e0;
+  --wipe-bg: #1e3a5f;
+  --wipe-ink: #ffffff;
+  --spot-bg: radial-gradient(120% 90% at 18% 40%, #13243b 0%, #08101b 70%);
+  color-scheme: dark;
+}
+
+/* ---------- Day ---------- */
+:root[data-theme="light"] {
+  --bg: #ebeee9;
+  --bg-grain: #e4e8e2;
+  --panel: #ffffff;
+  --panel-head: #f3f5f2;
+  --row-alt: #f7f8f6;
+  --line: #d9dee3;
+  --line-strong: #c3cbd5;
+  --ink: #0e1a2b;
+  --ink-2: #3f4e64;
+  --ink-3: #66758b;
+  --gold: #a9832a;
+  --gold-soft: rgba(200, 164, 77, .16);
+  --gold-line: rgba(169, 131, 42, .7);
+  --on-gold: #ffffff;
+  --mast-bg: #1e3a5f;
+  --mast-ink: #ffffff;
+  --mast-ink-2: #c9d6e8;
+  --mast-rule: #c8a44d;
+  --mark-bg: #c8a44d;
+  --mark-ink: #13243b;
+  --good: #0a7a42;
+  --warn: #a35500;
+  --bad: #c01f28;
+  --good-bg: #0f8a4c;
+  --warn-bg: #f4bf45;
+  --bad-bg: #cf2f36;
+  --good-on: #ffffff;
+  --warn-on: #2e1d00;
+  --bad-on: #ffffff;
+  --chip-done-bg: #e2f4e9;
+  --chip-backlog-bg: #fbe4e5;
+  --chip-pending-bg: #fdf0d5;
+  --chip-muted-bg: #edf0f3;
+  --self-bg: #1e3a5f;
+  --self-ink: #ffffff;
+  --partner-bg: #e8ecf1;
+  --partner-ink: #3f4e64;
+  --na-bg: #e8ecf0;
+  --na-ink: #6b7a8f;
+  --plain-rank-bg: #e6eaef;
+  --plain-rank-ink: #1e3a5f;
+  --wipe-bg: #1e3a5f;
+  --wipe-ink: #ffffff;
+  --spot-bg: radial-gradient(120% 90% at 18% 40%, #ffffff 0%, #ebeee9 70%);
+  color-scheme: light;
+}
+
+/* ---------- Wipe transition between boards ---------- */
+.wipe { position: fixed; top: 0; right: 0; bottom: 0; left: 0; pointer-events: none; z-index: 20; visibility: hidden; }
+.wipe-panel {
+  position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+  background: var(--wipe-bg);
+  color: var(--wipe-ink);
+  display: grid;
+  align-items: center;
+  justify-items: start;
+  place-items: center start;
+  padding-left: 9vw;
+  transform: translateX(-101%);
+}
+.wipe-edge {
+  position: absolute; top: 0; bottom: 0; left: 0;
+  width: calc(var(--u) * 1.4);
+  background: var(--brand-gold);
+  transform: translateX(-100vw);
+}
+.wipe-kicker { font-size: calc(var(--u) * 2.4); letter-spacing: .3em; text-transform: uppercase; color: var(--brand-gold); font-weight: 700; }
+.wipe-title { margin-top: calc(var(--u) * 1.4); font-size: calc(var(--u) * 9); font-weight: 700; line-height: 1; }
+.wipe.is-running { visibility: visible; }
+.wipe-title::after {
+  content: "";
+  display: block;
+  margin-top: calc(var(--u) * 2.4);
+  width: calc(var(--u) * 26);
+  height: calc(var(--u) * .6);
+  background: var(--brand-gold);
+}
+
+/* Animation off (settings) or reduced motion (OS): cut, don't move. */
+:root[data-motion="off"] *, :root[data-motion="off"] *::before, :root[data-motion="off"] *::after {
+  animation-duration: .001ms !important; animation-delay: 0ms !important; transition-duration: .001ms !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0ms !important; transition-duration: .001ms !important; }
+}

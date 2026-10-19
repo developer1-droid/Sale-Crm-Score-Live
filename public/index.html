@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shazia Rice Leaderboard</title>
+  <meta name="description" content="Live CRM Executive and Sales Coordinator leaderboards for the office TV.">
+  <meta name="color-scheme" content="dark light">
+  <script>
+    // Pick the theme before first paint so the TV never flashes the wrong one (js/theme.js owns the logic).
+    (function () {
+      // No URLSearchParams on old TV browsers.
+      var q = { get: function (k) { var m = new RegExp("[?&]" + k + "=([^&]*)").exec(location.search); return m ? decodeURIComponent(m[1]) : null; } };
+      var mode = q.get('theme');
+      try {
+        var cached = JSON.parse(localStorage.getItem(q.get('mock') === '1' ? 'scorelive.mock-settings' : 'scorelive.settings') || 'null');
+        var over = JSON.parse(localStorage.getItem('scorelive.theme-override') || 'null');
+        var shared = (cached && cached.theme) || 'dark';
+        mode = mode || (over && over.over === shared ? over.mode : shared);
+      } catch (e) { mode = mode || 'dark'; }
+      if (mode === 'auto') mode = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', mode === 'light' ? 'light' : 'dark');
+    })();
+  </script>
+  <script>
+    // A TV has no dev tools: show script errors on screen so a stuck "Loading scores" says why,
+    // and send them to the server's console (POST /api/client-log), at most 20 per page load.
+    (function () {
+      var sent = 0;
+      function report(text) {
+        if (sent >= 20) return;
+        sent += 1;
+        try {
+          var x = new XMLHttpRequest();
+          x.open('POST', '/api/client-log', true);
+          x.setRequestHeader('Content-Type', 'application/json');
+          x.send(JSON.stringify({ kind: 'error', msg: String(text).slice(0, 400), href: location.pathname + location.search, ua: navigator.userAgent }));
+        } catch (e) { /* nothing more to do on this screen */ }
+      }
+      function show(text) {
+        var box = document.getElementById('bootError');
+        if (!box) {
+          if (!document.body) return;
+          box = document.createElement('div');
+          box.id = 'bootError';
+          box.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;padding:8px 16px;font:14px/1.4 sans-serif;background:#7f1d1d;color:#fff;white-space:pre-wrap';
+          document.body.appendChild(box);
+        }
+        if (box.childNodes.length < 5) box.appendChild(document.createTextNode('Error: ' + text + '\n'));
+      }
+      window.onerror = function (msg, src, line, col) {
+        var text = msg + ' (' + (src || '').split('/').pop() + ':' + line + (col ? ':' + col : '') + ')';
+        show(text);
+        report(text);
+      };
+      if (window.addEventListener) {
+        window.addEventListener('unhandledrejection', function (e) {
+          var reason = e && e.reason;
+          report('unhandled promise rejection: ' + ((reason && (reason.stack || reason.message)) || reason));
+        });
+      }
+    })();
+    // Old TV browsers (before Chrome 84) ignore gap on flex boxes; styles fall back to margins under html.no-flexgap.
+    (function () {
+      var d = document.createElement('div');
+      d.style.cssText = 'display:flex;flex-direction:column;gap:1px;position:absolute;visibility:hidden';
+      d.appendChild(document.createElement('div'));
+      d.appendChild(document.createElement('div'));
+      document.documentElement.appendChild(d);
+      if (d.scrollHeight !== 1) document.documentElement.className += ' no-flexgap';
+      document.documentElement.removeChild(d);
+    })();
+  </script>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="safe">
+    <header class="masthead">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">SR</div>
+        <div class="brand-words">
+          <div class="brand-name">Shazia Rice</div>
+          <div class="brand-sub">Performance wall</div>
+        </div>
+      </div>
+
+      <div class="headline">
+        <div class="kicker" id="kicker">Leaderboard</div>
+        <h1 class="title"><span id="title">Loading scores</span><span id="period" class="period"></span></h1>
+      </div>
+
+      <div class="livebox">
+        <div id="conn" class="conn" data-state="connecting">
+          <span class="conn-dot" aria-hidden="true"></span>
+          <span id="connLabel">Connecting</span>
+        </div>        
+        <div id="ago" class="ago"></div>
+      </div>
+
+      <div class="clock" aria-label="India time">
+        <div class="clock-time"><span id="clockTime">--:--</span><span id="clockSec" class="clock-sec"></span></div>
+        <div id="clockDate" class="clock-date">IST</div>
+      </div>
+    </header>
+
+    <nav id="filterbar" class="filterbar" aria-label="Period"></nav>
+
+    <main id="stage" class="stage" aria-live="polite"></main>
+
+    <footer class="rail">
+      <ol id="segments" class="segments" aria-label="Rotation"></ol>
+      <div id="railNote" class="rail-note"></div>
+    </footer>
+
+    <div id="ticker" class="ticker" aria-hidden="true"></div>
+  </div>
+
+  <div class="toolbar" role="toolbar" aria-label="Screen controls">
+    <button id="btnFullscreen" class="tool" type="button" aria-pressed="false" aria-label="Full screen (F)" title="Full screen (F)">
+      <svg class="ico-expand" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+      <svg class="ico-shrink" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>
+      <kbd>F</kbd>
+    </button>
+    <button id="btnTheme" class="tool" type="button" aria-label="Switch light / dark (T)" title="Switch light / dark (T)">
+      <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+      <kbd>T</kbd>
+    </button>
+    <button id="btnSettings" class="tool" type="button" aria-label="Settings (S)" title="Settings (S)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      Settings <kbd>S</kbd>
+    </button>
+  </div>
+
+  <div id="wipe" class="wipe" aria-hidden="true">
+    <div class="wipe-panel">
+      <div class="wipe-label">
+        <div id="wipeKicker" class="wipe-kicker"></div>
+        <div id="wipeTitle" class="wipe-title"></div>
+      </div>
+    </div>
+    <div class="wipe-edge"></div>
+  </div>
+
+  <!-- ES5 bundle of js/app.js built by the server (lib/legacyBuild.js), so old smart-TV browsers run it too. -->
+  <script src="js/app.legacy.js" onerror="var s=document.createElement('script');s.type='module';s.src='js/app.js';document.body.appendChild(s)"></script>
+</body>
+</html>
